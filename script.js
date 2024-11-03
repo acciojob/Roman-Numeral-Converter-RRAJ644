@@ -1,35 +1,34 @@
 function convertToRoman(num) {
-  	 const obj = {
+  const obj = {
     0: ['M', 1000],
     1: ['CM', 900],
     2: ['D', 500],
     3: ['CD', 400],
     4: ['C', 100],
-    5: ['L', 50],
-    6: ['X', 10],
+    5: ['XC', 90],
+    6: ['L', 50],
     7: ['XL', 40],
-    8: ['V', 5],
-    9: ['IV', 4],
-    10: ['I', 1],
+    8: ['X', 10],
+    9: ['IX', 9],
+    10: ['V', 5],
+    11: ['IV', 4],
+    12: ['I', 1],
   };
 
-  let ans = '';
+  let result = '';
 
-  const len = Object.keys(obj).length;
+  for (let i = 0; i < Object.keys(obj).length; i++) {
+    const [roman, value] = obj[i];
 
-  // Process special cases first (subtractive notation)
-  for (let i = 0; i < len; i++) {
-    const [roman, val] = obj[i];
-
-    while (num >= val) {
-      ans += roman;
-      num -= val;
+    while (num >= value) {
+      result += roman;
+      num -= value;
     }
   }
 
-  return ans;
-
+  return result;
 }
+
 // You can test your code by running the above function and printing it to console by pressing the run button at the top. To run it with input 36, uncomment the following line
 
 console.log(convertToRoman(36));
